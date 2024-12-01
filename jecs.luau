@@ -25,10 +25,10 @@ type GraphEdge = {
 
 type GraphEdges = Map<i53, GraphEdge>    --Stores all the edges of the graphs.
 
-type GraphNode = {
-	add: GraphEdges,
-	remove: GraphEdges,
-	refs: GraphEdge,
+type GraphNode = {		--Represents One Node in the graph
+	add: GraphEdges,	--Specifies where to add the node
+	remove: GraphEdges,	--Specifies in what Map to remove the node
+	refs: GraphEdge,	--Filesysten?
 }
 
 export type Archetype = {
