@@ -9,19 +9,21 @@ type i24 = number --Come back to this currently unknown what its for.
 type Ty = { i53 } --A table storing i53 which are numbers, currently unknown what used for.
 type ArchetypeId = number --Archetype to refrence to entitys that have similar components
 
-type Column = { any }
+type Column = { any } --For column generation or just a column of a multi dimensional array that has rows and columns
 
-type Map<K, V> = { [K]: V }
+type Map<K, V> = { [K]: V } --also often reffered to as keydictionary to store key-value pairs
+
+
 
 type GraphEdge = {
-	from: Archetype,
-	to: Archetype?,
-	id: number,
-	prev: GraphEdge?,
-	next: GraphEdge?,
+	from: Archetype,		--The prev archetype
+	to: Archetype?,			--The current archetype
+	id: number,			--id of the archetype
+	prev: GraphEdge?,		--Is the prev node an edge of the graph??
+	next: GraphEdge?,		--Is the next node an edge of the graph??
 }
 
-type GraphEdges = Map<i53, GraphEdge>
+type GraphEdges = Map<i53, GraphEdge>    --Stores all the edges of the graphs.
 
 type GraphNode = {
 	add: GraphEdges,
