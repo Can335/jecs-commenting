@@ -3,11 +3,11 @@
 --!strict
 --draft 4
 
-type i53 = number --Come back to this, currently unknown what its for.
-type i24 = number --Come back to this currently unknown what its for.
+type i53 = number --Come back to this, currently unknown what its for. --For Sparse
+type i24 = number --Come back to this currently unknown what its for. --For dense  
 
-type Ty = { i53 } --A table storing i53 which are numbers, currently unknown what used for.
-type ArchetypeId = number --Archetype to refrence to entitys that have similar components
+type Ty = { i53 } --A table storing i53 which are numbers, For Dense arrays
+type ArchetypeId = number --Archetype to refrence to entitys that have a specific component combination
 
 type Column = { any } --For column generation or just a column of a multi dimensional array that has rows and columns
 
@@ -16,8 +16,8 @@ type Map<K, V> = { [K]: V } --also often reffered to as keydictionary to store k
 
 
 type GraphEdge = {
-	from: Archetype,		--The prev archetype
-	to: Archetype?,			--The current archetype
+	from: Archetype,		--The prev node archetype
+	to: Archetype?,			--The current node archetype
 	id: number,			--id of the archetype
 	prev: GraphEdge?,		--Is the prev node an edge of the graph??
 	next: GraphEdge?,		--Is the next node an edge of the graph??
@@ -31,22 +31,22 @@ type GraphNode = {		--Represents One Node in the graph
 	refs: GraphEdge,	--Filesysten?
 }
 
-export type Archetype = {
-	id: number,
-	types: Ty,
-	type: string,
-	entities: { number },
-	columns: { Column },
-	records: { ArchetypeRecord },
+export type Archetype = { --Archetypes are unuiqe identifiers for a combination of components an entity posseses
+	id: number, --Id of the archetype
+	types: Ty, --back to the i53 table currently unknown, but the name types seems to reffer that its reffering to other archetypes with similar combinations of components that house inentitys
+	type: string, --The type as a string
+	entities: { number }, --The entities that have the unuiqe combination of components of the archetype.
+	columns: { Column }, --columns with rows , currently dont know what for.
+	records: { ArchetypeRecord }, --Fields of data with unuiqe identifiers which seems to be numbers (FieldName)
 } & GraphNode
 
-type Record = {
-	archetype: Archetype,
-	row: number,
-	dense: i24,
+type Record = { --a record datastructure 
+	archetype: Archetype, --associated to an archetype
+	row: number, --rows of the record data structures, should be fields??
+	dense: i24, --dense of sparse set
 }
 
-type ArchetypeRecord = {
+type ArchetypeRecord = { --ArchetypeRecord storing archetypes? Probably not, come back to this.
 	count: number,
 	column: number,
 }
