@@ -3,11 +3,11 @@
 --!strict
 --draft 4
 
-type i53 = number
-type i24 = number
+type i53 = number --Come back to this, currently unknown what its for.
+type i24 = number --Come back to this currently unknown what its for.
 
-type Ty = { i53 }
-type ArchetypeId = number
+type Ty = { i53 } --A table storing i53 which are numbers, currently unknown what used for.
+type ArchetypeId = number --Archetype to refrence to entitys that have similar components
 
 type Column = { any }
 
